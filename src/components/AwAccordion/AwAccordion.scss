@@ -1,0 +1,28 @@
+.aw-accordion {
+    
+    .section {
+        .section-header {
+            background: lightgray;
+            cursor: pointer;
+            color: #555;
+        };
+
+        .section-panel-container {
+            border: 1px solid;
+            overflow: hidden;
+            // transition: height 0.5s ease-in-out;
+
+            .section-panel {
+                overflow: hidden;
+                transform: translateY(0);
+                // transition: transform 0.5s ease-in-out;
+            };
+        };
+
+        &.closed {
+            .section-panel {
+                transform: translateY(-100%);
+            };
+        };
+    };
+};
