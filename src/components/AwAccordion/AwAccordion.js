@@ -171,11 +171,31 @@ class AwAccordion extends Component {
     };
 
     toggleSection = (event, index) => {
-        if (event.target.classList.contains("ignore-toggle")) {
-            return;
+        let canToggle = true;
+
+        const classArray = Array.from(event.target.classList);
+
+        if (this.props.toggleIgnoreClasses) {
+            this.props.toggleIgnoreClasses.forEach(classIgnore => {
+                if(classArray.includes(classIgnore)) canToggle = false;
+            });
+        };
+
+        if (this.props.toggleIgnoreIds) {
+            this.props.toggleIgnoreIds.forEach(idIgnore => {
+                if(event.target.id.toLowerCase() === idIgnore.toLowerCase()) canToggle = false;
+            });
+        };
+
+        if(this.props.toggleIgnoreElements) {
+            this.props.toggleIgnoreElements.forEach(elementIgnore => {
+                if(event.target.nodeName.toLowerCase() === elementIgnore.toLowerCase()) canToggle = false;
+            });
         };
 
         event.preventDefault();
+
+        if(!canToggle) return;
 
         const sectionsCopy = [...this.state.sections];
         const isOpen = sectionsCopy[index].open;

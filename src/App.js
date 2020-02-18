@@ -5,13 +5,18 @@ function App() {
   return (
     <>
       <AwAccordion
-        duration="1"
+        duration="0.5"
         timing="ease-in-out"
-        multiopen="true">
+        multiopen="true"
+        toggleIgnoreClasses={["no-toggle", "toggle-free"]}
+        toggleIgnoreIds={["noToggle"]}
+        toggleIgnoreElements={["input", "label", "span"]}>
 
         <div className="section">
           <div className="section-header">
             <h1>Header 1</h1>
+            <label htmlFor="awCheckbox">Don't toggle here or checkbox!</label>
+            <input type="checkbox" id="awCheckbox" />
           </div>
 
           <div className="section-panel">
@@ -25,6 +30,9 @@ function App() {
         <div className="section">
           <div className="section-header">
             <h1>Header 2</h1>
+            <p className="toggle-free">Don't toggle here!"</p>
+            <p className="no-toggle">Or here!</p>
+            <p id="noToggle">Or here!</p>
           </div>
 
           <div className="section-panel">
@@ -36,6 +44,7 @@ function App() {
         <div className="section">
           <div className="section-header">
             <h1>Header 3</h1>
+            <span>Don't toggle here!</span>
           </div>
 
           <div className="section-panel">
