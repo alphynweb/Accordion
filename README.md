@@ -49,7 +49,7 @@ This is an HOC component to wrap around markup in order to acheive a sliding acc
 #### timing - Transition timing function - "ease", "ease-in", "ease-out", and "ease-in-out"
 #### multiopen - "true" or "false" (default = "true") - determines whether more than one panel can be simultaneously open
 #### toggleIgnoreClasses (Array) - Class names of elements that do not trigger opening and closing of panels
-#### toggleIgnoreIds (Array) - Id's of eleemnts that do not trigger opening and closing of panels
+#### toggleIgnoreIds (Array) - Id's of elements that do not trigger opening and closing of panels
 #### toggleIgnoreElements (Array) - Node names of elements that do not trigger opening and closing of panels
 
 #### Example :
