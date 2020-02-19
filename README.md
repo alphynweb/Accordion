@@ -1,68 +1,107 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# AwAccordion
 
-## Available Scripts
+This is an HOC component to wrap around markup in order to acheive a sliding accordion.
 
-In the project directory, you can run:
+## Please use the following format of markup inside the AwAccordion Tags
 
-### `npm start`
+```
+<div className="section">
+  <div className="section-header">
+    // Section header content goes here
+  </div>
+  <div className="section-panel">
+    // Section panel content goes here
+  </div>
+  
+  <div className="section-header">
+    // Section header content goes here
+  </div>
+  <div className="section-panel">
+    // Section panel content goes here
+  </div>
+</div>
+```
+## To convert to sliding accordion, wrap with AwAccordion component
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```
+<AwAccordion>
+  <div className="section">
+    <div className="section-header">
+      // Section header content goes here
+    </div>
+    <div className="section-panel">
+      // Section panel content goes here
+    </div>
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+    <div className="section-header">
+      // Section header content goes here
+    </div>
+    <div className="section-panel">
+      // Section panel content goes here
+    </div>
+  </div>
+</AwAccordion>
+```
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Props can be added to the AwAccordion HOC 
+#### duration - In seconds. Speed at which the panels open and close
+#### timing - Transition timing function - "ease", "ease-in", "ease-out", and "ease-in-out"
+#### multiopen - "true" or "false" (default = "true") - determines whether more than one panel can be simultaneously open
+#### toggleIgnoreClasses (Array) - Class names of elements that do not trigger opening and closing of panels
+#### toggleIgnoreIds (Array) - Id's of elements that do not trigger opening and closing of panels
+#### toggleIgnoreElements (Array) - Node names of elements that do not trigger opening and closing of panels
 
-### `npm run build`
+#### Example :
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+<AwAccordion
+        duration="0.5"
+        timing="ease-in-out"
+        multiopen="true"
+        toggleIgnoreClasses={["no-toggle", "toggle-free"]}
+        toggleIgnoreIds={["noToggle"]}
+        toggleIgnoreElements={["input", "label", "span"]}>
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+  <div className="section">
+    <div className="section-header">
+      <h1>Header 1</h1>
+      <label htmlFor="awCheckbox">Don't toggle here or checkbox!</label>
+      <input type="checkbox" id="awCheckbox" />
+    </div>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+    <div className="section-panel">
+      <p>This is panel 1 content</p>
+      <p>This is panel 1 content</p>
+      <p>This is panel 1 content</p>
+      <p>This is panel 1 content</p>
+    </div>
+  </div>
 
-### `npm run eject`
+  <div className="section">
+    <div className="section-header">
+      <h1>Header 2</h1>
+      <p className="toggle-free">Don't toggle here!"</p>
+      <p className="no-toggle">Or here!</p>
+      <p id="noToggle">Or here!</p>
+    </div>
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+    <div className="section-panel">
+      <p>This is panel 2 content</p>
+      <p>This is panel 2 content</p>
+    </div>
+  </div>
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+  <div className="section">
+    <div className="section-header">
+      <h1>Header 3</h1>
+      <span>Don't toggle here!</span>
+    </div>
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+    <div className="section-panel">
+      <p>This is panel 3 content</p>
+      <p>This is panel 3 content</p>
+    </div>
+  </div>
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+</AwAccordion>
