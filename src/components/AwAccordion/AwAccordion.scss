@@ -1,21 +1,32 @@
+$accordion-header-bg-color: lightslategray;
+$accordion-header-bg-hover-color: darken($accordion-header-bg-color, 20%);
+$accordion-header-color: #dedede;
+$accordion-panel-bg-color: lighten($accordion-header-bg-color, 20%);
+
 .aw-accordion {
-    
     .section {
         .section-header {
-            background: lightgray;
             cursor: pointer;
-            color: #555;
+            display: inline-block;
+            width: 100%;
+            background: $accordion-header-bg-color;
+            transition: background-color 0.3s;
+            color: $accordion-header-color;
+            padding: 1rem;
+
+            &:hover {
+                background: $accordion-header-bg-hover-color;
+            };
         };
 
         .section-panel-container {
-            border: 1px solid;
             overflow: hidden;
-            // transition: height 0.5s ease-in-out;
 
             .section-panel {
                 overflow: hidden;
                 transform: translateY(0);
-                // transition: transform 0.5s ease-in-out;
+                background: $accordion-panel-bg-color;
+                padding: 1rem;
             };
         };
 
